@@ -37,7 +37,7 @@ public class CountApiTest {
 	@Test
 	public void countApiTest_missingAuth() throws IOException {
 		given().baseUri(ConfigManager.getProperty("BASE_URI")).and()
-		.header("Authorization", AuthTokenProvider.getToken(Role.FD)).log().uri().log().method()
+	.log().uri().log().method()
 		.when().get("/dashboard/count").then().log().all().statusCode(401);
 	}
 

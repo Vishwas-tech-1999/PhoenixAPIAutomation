@@ -46,7 +46,7 @@ public class ConfigManager {
 
 	}
 
-	public static String getProperty(String key) throws IOException {
+	public static String getProperty(String key)  {
 		// TODO Auto-generated method stub
 
 		return properties.getProperty(key);

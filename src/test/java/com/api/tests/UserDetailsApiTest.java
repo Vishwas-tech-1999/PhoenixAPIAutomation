@@ -21,7 +21,7 @@ import com.api.utilities.ConfigManager;
 public class UserDetailsApiTest {
 
 	
-	@Test
+	@Test(description = "Verify userdetails API Response", groups= {"API","SMOKE", "REGRESSION"})
 	public void userDetaulsApiTest() throws IOException {
 		
 		//Header authHeader = new Header("Authorization", AuthTokenProvider.getToken(ENG));

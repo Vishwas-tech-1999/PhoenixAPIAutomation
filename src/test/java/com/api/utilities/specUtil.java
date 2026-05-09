@@ -7,7 +7,7 @@ import java.io.IOException;
 import org.hamcrest.Matchers;
 
 import com.api.Constants.Role;
-import com.api.pojo.UserCredentials;
+import com.api.RequestModels.UserCredentials;
 
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
@@ -35,7 +35,7 @@ public static RequestSpecification requestSpec(Object payload) {
 		
 		RequestSpecification request = new RequestSpecBuilder().setBaseUri(ConfigManager.getProperty("BASE_URI")).setContentType(ContentType.JSON)
 		.setAccept(ContentType.JSON)
-		.setBody(usercreds)
+		.setBody(payload)
 		.log(LogDetail.URI)
 		.log(LogDetail.METHOD)
 		.log(LogDetail.HEADERS)
@@ -43,6 +43,20 @@ public static RequestSpecification requestSpec(Object payload) {
 		.build();
 		return request;
 	}
+
+public static RequestSpecification requestSpec(Role role, Object payload) throws IOException {
+	
+	RequestSpecification request = new RequestSpecBuilder().setBaseUri(ConfigManager.getProperty("BASE_URI")).setContentType(ContentType.JSON)
+	.setAccept(ContentType.JSON)
+	.addHeader("Authorization", AuthTokenProvider.getToken(role))
+	.setBody(payload)
+	.log(LogDetail.URI)
+	.log(LogDetail.METHOD)
+	.log(LogDetail.HEADERS)
+	.log(LogDetail.BODY)
+	.build();
+	return request;
+}
 public static RequestSpecification requestSpecWithAuth(Role role) throws IOException
 {
 	RequestSpecification request = new RequestSpecBuilder().setBaseUri(ConfigManager.getProperty("BASE_URI")).setContentType(ContentType.JSON)

@@ -18,7 +18,7 @@ import io.restassured.module.jsv.JsonSchemaValidator;
 
 public class CountApiTest {
 	
-	@Test
+	@Test(description = "Verify Count API Response", groups= {"API","SMOKE", "REGRESSION"})
 	public void verifyCountAPiResponse() throws IOException {
 		given().spec(specUtil.requestSpecWithAuth(Role.FD))
 		.when().get("/dashboard/count").then().spec(specUtil.responseSpec_Ok())
@@ -33,7 +33,7 @@ public class CountApiTest {
 		.body("data.label", Matchers.everyItem(Matchers.not(Matchers.blankOrNullString())));
 	}
 	
-	@Test
+	@Test(description = "Verify count  API Response for missing auth", groups= {"API","SMOKE", "Negative", "REGRESSION"})
 	public void countApiTest_missingAuth() throws IOException {
 		given().spec(specUtil.requestSpec())
 		.when().get("/dashboard/count").then().spec(specUtil.responseSpec_UnAuth_text(401));

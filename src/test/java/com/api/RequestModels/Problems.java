@@ -1,4 +1,4 @@
-package com.api.pojo;
+package com.api.RequestModels;
 
 public record Problems (
 	 int id,

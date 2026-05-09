@@ -1,4 +1,4 @@
-package com.api.pojo;
+package com.api.RequestModels;
 
 import java.util.Arrays;
 import java.util.List;

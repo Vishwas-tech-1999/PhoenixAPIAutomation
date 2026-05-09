@@ -16,7 +16,7 @@ import java.io.IOException;
 
 public class MasterAPITest {
 
-	@Test
+	@Test(description = "Verify master API Response", groups= {"API","SMOKE", "REGRESSION"})
 	public void msterAPITest() throws IOException {
 		given().spec(specUtil.requestSpecWithAuth(Role.FD)).when()
 				.post("master").then().spec(specUtil.responseSpec_Ok())
@@ -27,7 +27,7 @@ public class MasterAPITest {
 				.body(JsonSchemaValidator.matchesJsonSchemaInClasspath("responSchema/masterAPIResponseSchema.json"));
 	}
 
-	@Test
+	@Test(description = "Verify master API Response for missing auth", groups= {"API","SMOKE", "REGRESSION"})
 	public void masterApi_MissAuth() {
 		given().spec(specUtil.requestSpec()).when().post("master").then().spec(specUtil.responseSpec_UnAuth_text(401));
 	}

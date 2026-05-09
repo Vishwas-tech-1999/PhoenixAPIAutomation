@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 import com.api.Constants.Role;
 import com.api.utilities.AuthTokenProvider;
 import com.api.utilities.ConfigManager;
+import com.api.utilities.specUtil;
 
 import io.restassured.module.jsv.JsonSchemaValidator;
 
@@ -19,10 +20,8 @@ public class CountApiTest {
 	
 	@Test
 	public void verifyCountAPiResponse() throws IOException {
-		given().baseUri(ConfigManager.getProperty("BASE_URI")).and()
-		.header("Authorization", AuthTokenProvider.getToken(Role.FD)).log().uri().log().method()
-		.when().get("/dashboard/count").then().log().all().statusCode(200)
-		.and()
+		given().spec(specUtil.requestSpecWithAuth(Role.FD))
+		.when().get("/dashboard/count").then().spec(specUtil.responseSpec_Ok())
 		.body("message", Matchers.equalTo("Success"))
 		.and()
 		.body("data", Matchers.notNullValue())
@@ -36,9 +35,8 @@ public class CountApiTest {
 	
 	@Test
 	public void countApiTest_missingAuth() throws IOException {
-		given().baseUri(ConfigManager.getProperty("BASE_URI")).and()
-	.log().uri().log().method()
-		.when().get("/dashboard/count").then().log().all().statusCode(401);
+		given().spec(specUtil.requestSpec())
+		.when().get("/dashboard/count").then().spec(specUtil.responseSpec_UnAuth_text(401));
 	}
 
 	

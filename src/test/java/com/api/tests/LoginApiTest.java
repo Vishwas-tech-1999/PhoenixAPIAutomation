@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 
 import com.api.pojo.UserCredentials;
 import com.api.utilities.ConfigManager;
+import com.api.utilities.specUtil;
 
 import static com.api.utilities.ConfigManagerOld.*;
 
@@ -22,28 +23,16 @@ public class LoginApiTest {
 	@Test
 	public void loginApiTest() throws IOException {
 		
+		
 		System.getProperty("----------------"+"env");
 		
 		UserCredentials user = new UserCredentials("iamfd", "password");
 		
-		given().baseUri(ConfigManager.getProperty("BASE_URI")).
-		and().
-		contentType(JSON)
-		.and()
-		.accept(ANY)
-		.and()
-		.body(user)
-		.and()
-		.log().uri()
-		.and()
-		.log().method()
-		.log().headers()
-		.log().body()
+		given().spec(specUtil.requestSpec(user))
 		.when()
-		.body("login")
+		.post("login")
 		.then()
-		.statusCode(200)
-		.and()
+.spec(specUtil.responseSpec_Ok())
 		.body("message", Matchers.equalTo("Success"))
 		.and()
 		.body(JsonSchemaValidator.matchesJsonSchemaInClasspath("responSchema/LoginResponseSchema.json"));

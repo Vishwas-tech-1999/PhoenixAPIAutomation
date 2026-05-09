@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import com.api.Constants.Role;
 import com.api.utilities.AuthTokenProvider;
 import com.api.utilities.ConfigManager;
+import com.api.utilities.specUtil;
 
 import io.restassured.module.jsv.JsonSchemaValidator;
 
@@ -17,9 +18,8 @@ public class MasterAPITest {
 
 	@Test
 	public void msterAPITest() throws IOException {
-		given().baseUri(ConfigManager.getProperty("BASE_URI")).and()
-				.header("Authorization", AuthTokenProvider.getToken(Role.FD)).and().contentType("").log().all().when()
-				.post("master").then().log().all().statusCode(200).time(Matchers.lessThan(1000L))
+		given().spec(specUtil.requestSpecWithAuth(Role.FD)).when()
+				.post("master").then().spec(specUtil.responseSpec_Ok())
 				.body("message", Matchers.equalTo("Success")).body("data", Matchers.notNullValue())
 				.body("data", Matchers.hasKey("mst_model")).body("$", Matchers.hasKey("message"))
 				.body("$", Matchers.hasKey("message")).body("data.mst_oem.size()", Matchers.greaterThanOrEqualTo(2))
@@ -29,9 +29,7 @@ public class MasterAPITest {
 
 	@Test
 	public void masterApi_MissAuth() {
-		given().baseUri(ConfigManager.getProperty("BASE_URI")).and().
-
-				contentType("").log().all().when().post("master").then().log().all().statusCode(401);
+		given().spec(specUtil.requestSpec()).when().post("master").then().spec(specUtil.responseSpec_UnAuth_text(401));
 	}
 
 }

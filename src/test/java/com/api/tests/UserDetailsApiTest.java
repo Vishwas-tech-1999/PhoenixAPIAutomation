@@ -12,6 +12,8 @@ import io.restassured.module.jsv.JsonSchemaValidator;
 import org.testng.annotations.Test;
 
 import com.api.utilities.ConfigManagerOld;
+import com.api.utilities.specUtil;
+
 import static com.api.Constants.Role.*;
 import com.api.utilities.AuthTokenProvider;
 import com.api.utilities.ConfigManager;
@@ -22,16 +24,12 @@ public class UserDetailsApiTest {
 	@Test
 	public void userDetaulsApiTest() throws IOException {
 		
-		Header authHeader = new Header("Authorization", AuthTokenProvider.getToken(ENG));
+		//Header authHeader = new Header("Authorization", AuthTokenProvider.getToken(ENG));
  
-		given().baseUri(ConfigManager.getProperty("BASE_URI"))
-		.and()
-		.contentType(JSON)
-		.header(authHeader)
+		given().spec(specUtil.requestSpecWithAuth(FD))
 		.when()
 		.get("userdetails")
-		.then().log().all().
-		and().
+		.then().spec(specUtil.responseSpec_Ok()).
 		body(JsonSchemaValidator.matchesJsonSchemaInClasspath("responSchema\\UserDetailsresponseSchema.json"));
 	}
 }

@@ -20,10 +20,10 @@ public class ReadCsvFileMapToPojo {
 
 		//List<String[]> csvdata = csvreader.readAll();
 
-		CsvToBean<UserPojo> csvToBean = new CsvToBeanBuilder(csvreader).withType(UserPojo.class)
+		CsvToBean<UserBean> csvToBean = new CsvToBeanBuilder(csvreader).withType(UserBean.class)
 				.withIgnoreEmptyLine(true).build();
 
-		List<UserPojo> userlist = csvToBean.parse();
+		List<UserBean> userlist = csvToBean.parse();
 		System.out.println(userlist);
 		 System.out.println(userlist.get(0).getUsername());
 

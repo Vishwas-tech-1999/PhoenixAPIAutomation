@@ -1,32 +1,31 @@
-package com.api.csv;
+package com.api.utilities;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
 
+import com.api.dataproviders.bean.UserBean;
 import com.opencsv.CSVReader;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
-import com.opencsv.exceptions.CsvException;
 
-public class ReadCsvFileMapToPojo {
+public class CsvReaderUtil {
 
-	public static void main(String[] args) throws IOException, CsvException {
+	private CsvReaderUtil() {
+		
+	}
+	public static void main(String[] args) {
 		InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream("testData.csv");
 
 		InputStreamReader isr = new InputStreamReader(is);
 		CSVReader csvreader = new CSVReader(isr);
-
-		//List<String[]> csvdata = csvreader.readAll();
 
 		CsvToBean<UserBean> csvToBean = new CsvToBeanBuilder(csvreader).withType(UserBean.class)
 				.withIgnoreEmptyLine(true).build();
 
 		List<UserBean> userlist = csvToBean.parse();
 		System.out.println(userlist);
-		 System.out.println(userlist.get(0).getUsername());
-
+		System.out.println(userlist.get(0).getUsername());
 	}
 
 }

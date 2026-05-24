@@ -32,7 +32,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class CreateJobAPIDataDrivenTest {
-	private CreatejobApiPayload createJobPayload;
 	
 	
 	@Test(description = "Verify create API Response", groups= {"API","SMOKE", "REGRESSION"}, dataProviderClass = com.dataproviders.DataProviderUtil.class,

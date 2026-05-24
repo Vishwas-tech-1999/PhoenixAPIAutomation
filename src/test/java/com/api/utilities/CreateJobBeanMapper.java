@@ -17,18 +17,19 @@ public class CreateJobBeanMapper {
 	}
 
 	public static CreatejobApiPayload mapper(CreateJobBean bean) {
+		
+		System.out.println(bean);
 
-		String mstServiceLocationId = bean.getFmst_service_location_id();
-		System.out.println("*******");
-		System.out.println(bean.getFmst_service_location_id());
-		System.out.println("*******");
-
+		int mstServiceLocationId = Integer.parseInt(bean.getmst_service_location_id());
+		System.out.println(bean.getMst_platform_id());
 		int mstPlatformId = Integer.parseInt(bean.getMst_platform_id());
+
+		//String mstPlatformId = bean.getMst_platform_id();
 		int warrantyStatusId = Integer.parseInt(bean.getMst_warrenty_status_id());
 		int oemId = Integer.parseInt(bean.getMst_oem_id());
 
 		Customer customer = new Customer(bean.getCustomer__first_name(), bean.getCustomer__last_name(),
-				bean.getCustomer__mobile_number(), bean.getCustomer__mobile_number_alt(), bean.getCustomer__email_id(),
+				bean.getCustomer__mobile_number(), bean.getCustomer__mobile_number_alt(), bean.getCustomer_email_id(),
 				bean.getCustomer__email_id_alt());
 
 		CustomerAddress customeraddress = new CustomerAddress(bean.getCustomer_address__flat_number(),
@@ -47,7 +48,7 @@ public class CreateJobBeanMapper {
 		
 		List<Problems> problemsList = new ArrayList<Problems>();
 		problemsList.add(problems);
-		CreatejobApiPayload payload = new CreatejobApiPayload(0, mstPlatformId, warrantyStatusId,
+		CreatejobApiPayload payload = new CreatejobApiPayload(mstServiceLocationId, mstPlatformId, warrantyStatusId,
 				oemId, customer, customeraddress, customerproduct, problemsList);
 		
 		return payload;

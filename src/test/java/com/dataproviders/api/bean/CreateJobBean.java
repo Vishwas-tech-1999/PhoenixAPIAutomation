@@ -4,10 +4,10 @@ import com.opencsv.bean.CsvBindByName;
 
 public class CreateJobBean {
 
-	@CsvBindByName(column = "fmst_service_location_id")
-	private String fmst_service_location_id;
+	@CsvBindByName(column = "mst_service_location_id")
+	private String mst_service_location_id;
 
-	@CsvBindByName(column = "@CsvBindByName(column =\"mst_platform_id\")")
+	@CsvBindByName(column = "mst_platform_id")
 	private String mst_platform_id;
 
 	@CsvBindByName(column = "mst_warrenty_status_id")
@@ -31,7 +31,7 @@ public class CreateJobBean {
 	@CsvBindByName(column = "customer__email_id")
 	private String customer__email_id;
 
-	@CsvBindByName(column = "customer__email_id")
+	@CsvBindByName(column = "customer__email_id_alt")
 	private String customer__email_id_alt;
 
 	@CsvBindByName(column = "customer_address__flat_number")
@@ -40,10 +40,10 @@ public class CreateJobBean {
 	@CsvBindByName(column = "customer_address__apartment_name")
 	private String customer_address__apartment_name;
 
-	@CsvBindByName(column = "customer_address__apartment_name")
+	@CsvBindByName(column = "customer_address__street_name")
 	private String customer_address__street_name;
 
-	@CsvBindByName(column = "customer_address__apartment_name")
+	@CsvBindByName(column = "customer_address__landmark")
 	private String customer_address__landmark;
 
 	@CsvBindByName(column = "customer_address__area")
@@ -89,51 +89,14 @@ public class CreateJobBean {
 
 	}
 
-	public CreateJobBean(String fmst_service_location_id, String mst_platform_id, String mst_warrenty_status_id,
-			String mst_oem_id, String customer__first_name, String customer__last_name, String customer__mobile_number,
-			String customer__mobile_number_alt, String customer__email_id, String customer__email_id_alt,
-			String customer_address__flat_number, String customer_address__apartment_name,
-			String customer_address__street_name, String customer_address__landmark, String customer_address__area,
-			String customer_address__pincode, String customer_address__country, String customer_address__state,
-			String customer_product__dop, String customer_product__serial_number, String customer_product__imei1,
-			String customer_product__imei2, String customer_product__popurl, String customer_product__product_id,
-			String customer_product__mst_model_id, String problems__id, String problems__remark) {
-		super();
-		this.fmst_service_location_id = fmst_service_location_id;
-		this.mst_platform_id = mst_platform_id;
-		this.mst_warrenty_status_id = mst_warrenty_status_id;
-		this.mst_oem_id = mst_oem_id;
-		this.customer__first_name = customer__first_name;
-		this.customer__last_name = customer__last_name;
-		this.customer__mobile_number = customer__mobile_number;
-		this.customer__mobile_number_alt = customer__mobile_number_alt;
-		this.customer__email_id = customer__email_id;
-		this.customer__email_id_alt = customer__email_id_alt;
-		this.customer_address__flat_number = customer_address__flat_number;
-		this.customer_address__apartment_name = customer_address__apartment_name;
-		this.customer_address__street_name = customer_address__street_name;
-		this.customer_address__landmark = customer_address__landmark;
-		this.customer_address__area = customer_address__area;
-		this.customer_address__pincode = customer_address__pincode;
-		this.customer_address__country = customer_address__country;
-		this.customer_address__state = customer_address__state;
-		this.customer_product__dop = customer_product__dop;
-		this.customer_product__serial_number = customer_product__serial_number;
-		this.customer_product__imei1 = customer_product__imei1;
-		this.customer_product__imei2 = customer_product__imei2;
-		this.customer_product__popurl = customer_product__popurl;
-		this.customer_product__product_id = customer_product__product_id;
-		this.customer_product__mst_model_id = customer_product__mst_model_id;
-		this.problems__id = problems__id;
-		this.problems__remark = problems__remark;
+	
+
+	public String getmst_service_location_id() {
+		return mst_service_location_id;
 	}
 
-	public String getFmst_service_location_id() {
-		return fmst_service_location_id;
-	}
-
-	public void setFmst_service_location_id(String fmst_service_location_id) {
-		this.fmst_service_location_id = fmst_service_location_id;
+	public void setmst_service_location_id(String fmst_service_location_id) {
+		this.mst_service_location_id = fmst_service_location_id;
 	}
 
 	public String getMst_platform_id() {
@@ -192,11 +155,13 @@ public class CreateJobBean {
 		this.customer__mobile_number_alt = customer__mobile_number_alt;
 	}
 
-	public String getCustomer__email_id() {
+	public String getCustomer_email_id() {
 		return customer__email_id;
 	}
 
 	public void setCustomer__email_id(String customer__email_id) {
+		
+		System.out.println(customer__email_id);
 		this.customer__email_id = customer__email_id;
 	}
 
@@ -346,7 +311,7 @@ public class CreateJobBean {
 
 	@Override
 	public String toString() {
-		return "CreateJobBean [fmst_service_location_id=" + fmst_service_location_id + ", mst_platform_id="
+		return "CreateJobBean [mst_service_location_id=" + mst_service_location_id + ", mst_platform_id="
 				+ mst_platform_id + ", mst_warrenty_status_id=" + mst_warrenty_status_id + ", mst_oem_id=" + mst_oem_id
 				+ ", customer__first_name=" + customer__first_name + ", customer__last_name=" + customer__last_name
 				+ ", customer__mobile_number=" + customer__mobile_number + ", customer__mobile_number_alt="

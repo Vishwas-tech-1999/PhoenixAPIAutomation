@@ -34,7 +34,7 @@ import org.testng.annotations.Test;
 public class CreateJobAPIFakeDataDataDriven {
 	
 	
-	@Test(description = "Verify create API Response", groups= {"API","SMOKE", "REGRESSION"}, dataProviderClass = com.dataproviders.DataProviderUtil.class,
+	@Test(description = "Verify create API Response", groups= {"API","SMOKE", "REGRESSION", "faker"}, dataProviderClass = com.dataproviders.DataProviderUtil.class,
 			dataProvider = "Fakerdataprovider")
 	public void createJobApiTest(CreatejobApiPayload payload) throws IOException {
 		

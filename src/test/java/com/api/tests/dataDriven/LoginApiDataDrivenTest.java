@@ -31,7 +31,7 @@ public class LoginApiDataDrivenTest {
 	}
 
 	
-	@Test (description = "Verify Login APAi is working for FD user", groups= {"api", "Smoke", "Regression"},
+	@Test (description = "Verify Login APAi is working for FD user", groups= {"api", "Smoke", "Regression", "csv"},
 	dataProviderClass = com.dataproviders.DataProviderUtil.class,
 	dataProvider = "LoginAPIDataProvider"
 			)

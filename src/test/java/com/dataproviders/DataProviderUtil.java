@@ -46,8 +46,9 @@ public class DataProviderUtil {
 	
 	@DataProvider(name="Fakerdataprovider", parallel=true)
 	public static Iterator<CreatejobApiPayload> generateFakeDataProvider() throws IOException, CsvException {
-		
-	Iterator<CreatejobApiPayload> paylodlist = FakerDataGenerator.generateFakeCreateJobData(1000);
+		String fakerCount = System.getProperty("fakercount", "5");
+		int intfakerid = Integer.parseInt(fakerCount);
+	Iterator<CreatejobApiPayload> paylodlist = FakerDataGenerator.generateFakeCreateJobData(intfakerid);
 		return paylodlist;
 	
 	

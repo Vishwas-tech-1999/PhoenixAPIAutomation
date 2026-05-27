@@ -10,6 +10,7 @@ import org.testng.annotations.DataProvider;
 import com.api.RequestModels.CreatejobApiPayload;
 import com.api.utilities.CreateJobBeanMapper;
 import com.api.utilities.CsvReaderUtil;
+import com.api.utilities.FakerDataGenerator;
 import com.dataproviders.api.bean.CreateJobBean;
 import com.dataproviders.api.bean.UserBean;
 import com.opencsv.exceptions.CsvException;
@@ -39,6 +40,15 @@ public class DataProviderUtil {
 		}
 		
 		return payloadList.iterator();
+	
+	
+	}
+	
+	@DataProvider(name="Fakerdataprovider", parallel=true)
+	public static Iterator<CreatejobApiPayload> generateFakeDataProvider() throws IOException, CsvException {
+		
+	Iterator<CreatejobApiPayload> paylodlist = FakerDataGenerator.generateFakeCreateJobData(1000);
+		return paylodlist;
 	
 	
 	}

@@ -7,11 +7,11 @@ public class DbRunner {
 	public static void main(String[] args) throws SQLException {
 		// TODO Auto-generated method stub
 		for(int i=0; i<=400; i++) {
-DatabaseManager.createConnection();
- DatabaseManager.createConnection();
- DatabaseManager.createConnection();
+DatabaseManagerOld.createConnection();
+DatabaseManagerOld.createConnection();
+DatabaseManagerOld.createConnection();
 
- DatabaseManager.createConnection();
+DatabaseManagerOld.createConnection();
 		}
 
 	}

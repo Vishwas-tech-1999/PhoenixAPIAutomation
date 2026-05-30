@@ -10,6 +10,7 @@ import org.testng.annotations.DataProvider;
 import com.api.RequestModels.CreatejobApiPayload;
 import com.api.utilities.CreateJobBeanMapper;
 import com.api.utilities.CsvReaderUtil;
+import com.database.dao.CreateJobApiPayloadDataDao;
 import com.dataproviders.api.bean.CreateJobBean;
 import com.dataproviders.api.bean.UserBean;
 import com.opencsv.exceptions.CsvException;
@@ -41,5 +42,16 @@ public class DataProviderUtil {
 		return payloadList.iterator();
 	
 	
+	}
+	
+	@DataProvider(name="CreateJobAPIDBDataProvider", parallel=true)
+	public static Iterator<CreatejobApiPayload> createJobApiDBDataProvider() {
+		List<CreateJobBean> beanlist = CreateJobApiPayloadDataDao.getCreteJobPayloadData();
+		ArrayList<CreatejobApiPayload> payloadList = new ArrayList<CreatejobApiPayload>();
+		for(CreateJobBean createJobBean : beanlist) {
+			CreatejobApiPayload payload = CreateJobBeanMapper.mapper(createJobBean);
+			payloadList.add(payload);
+		}
+		return payloadList.iterator();
 	}
 }

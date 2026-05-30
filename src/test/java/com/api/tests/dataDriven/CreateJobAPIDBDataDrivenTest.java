@@ -31,11 +31,11 @@ import org.hamcrest.Matchers;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class CreateJobAPIDataDrivenTest {
+public class CreateJobAPIDBDataDrivenTest {
 	
 	
 	@Test(description = "Verify create API Response", groups= {"API","SMOKE", "REGRESSION"}, dataProviderClass = com.dataproviders.DataProviderUtil.class,
-			dataProvider = "CreateJobAPIDBDataProvider")
+			dataProvider = "CreateJobAPIDataProvider")
 	public void createJobApiTest(CreatejobApiPayload payload) throws IOException {
 		
 		

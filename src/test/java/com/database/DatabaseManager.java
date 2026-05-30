@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.api.utilities.ConfigManager;
+import com.api.utilities.EnvUtil;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
@@ -14,9 +15,9 @@ import groovy.transform.Synchronized;
 
 public class DatabaseManager {
 
-	private static  final String DB_URL = ConfigManager.getProperty("DB_URL");
-	private static final String DB_UN = ConfigManager.getProperty("DB_UN");
-	private static final String DB_PWD = ConfigManager.getProperty("DB_PWD");
+	private static  final String DB_URL =EnvUtil.getValue("DB_URL");
+	private static final String DB_UN = EnvUtil.getValue("DB_UN");
+	private static final String DB_PWD = EnvUtil.getValue("DB_PWD");
 	private static final int MAXIMUM_POOL_SIZE=Integer.parseInt(ConfigManager.getProperty("MAXIMUM_POOL_SIZE"));
 	private static final int MINIMUM_IDLE_TIME=Integer.parseInt(ConfigManager.getProperty("MINIMUM_IDLE_TIME"));
 	private static final int CONNECTION_TIMEOUT=Integer.parseInt(ConfigManager.getProperty("CONNECTION_TIMEOUT"));

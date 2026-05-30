@@ -1,7 +1,7 @@
 package com.api.Constants;
 
 public enum Product {
-Nexus_2(1), PIXEL(2);
+Nexus_2(3), PIXEL(3);
 
 	int code;
 Product(int code) {

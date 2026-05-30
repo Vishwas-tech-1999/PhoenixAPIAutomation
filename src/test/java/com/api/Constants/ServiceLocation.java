@@ -3,7 +3,7 @@ package com.api.Constants;
 public enum ServiceLocation {
 
 	
-	ServiceLocationA(1);
+	ServiceLocationA(0);
 	
 	int code;
 	ServiceLocation(int i) {

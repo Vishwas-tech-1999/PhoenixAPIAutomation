@@ -43,7 +43,7 @@ public class CreateJobAPITestDBValidation {
 		 customer = new Customer("Hildegard","Gleason", "279-968-7176", "856-222-3192", "Brooklyn_Kilback43@hotmail.com", "");
 		System.out.println(customer.first_name());
 		CustomerAddress cutomerAddress = new CustomerAddress("55", "a", "puram", "near park", "Mumbai", "523566", "India", "Maharashtra");
-		CustomerProduct customerProduct = new CustomerProduct(TimeUtil.getDaysAgo(10), "814091581845279", "814091581845279", "814091581845279", TimeUtil.getDaysAgo(10), Product.PIXEL.getCode(), Model.GALAXY.getCode());
+		CustomerProduct customerProduct = new CustomerProduct(TimeUtil.getDaysAgo(10), "814091581845272", "814091581845272", "814091581845272", TimeUtil.getDaysAgo(10), Product.PIXEL.getCode(), Model.GALAXY.getCode());
 		Problems problems = new Problems(Problem.MICROSD_CARD_IS_NOT_WORKING_ON_YOUR_PHONE.getCode(), "A");
 		List<Problems> problems1 =new ArrayList<Problems>();
 		problems1.add(problems);

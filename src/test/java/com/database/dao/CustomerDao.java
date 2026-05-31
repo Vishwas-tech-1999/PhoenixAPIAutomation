@@ -1,6 +1,7 @@
 package com.database.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -13,7 +14,7 @@ public class CustomerDao {
 	
 
 	private static final String CUSTOMER_DATA_QUERY="""
-			Select * from tr_customer where id = 304800 """;
+			Select * from tr_customer where id = ? """;
 	
 	public static CustomerDBModel getCutomerInfo(int id)  {
 		
@@ -22,10 +23,12 @@ public class CustomerDao {
 		try {
 		 conn = DatabaseManager.getConnection();
 		
-		Statement statement = conn.createStatement();
+		PreparedStatement preparestatement = conn.prepareStatement(CUSTOMER_DATA_QUERY);
+		preparestatement.setInt(1, id);
 		
 		
-		ResultSet resultSet = statement.executeQuery(CUSTOMER_DATA_QUERY);
+		
+		ResultSet resultSet = preparestatement.executeQuery();
 	
 		while(resultSet.next()) {
 			System.out.println(resultSet.getString("first_name"));

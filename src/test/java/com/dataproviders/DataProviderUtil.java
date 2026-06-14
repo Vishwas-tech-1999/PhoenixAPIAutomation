@@ -10,7 +10,11 @@ import org.testng.annotations.DataProvider;
 import com.api.RequestModels.CreatejobApiPayload;
 import com.api.utilities.CreateJobBeanMapper;
 import com.api.utilities.CsvReaderUtil;
+<<<<<<< HEAD
 import com.database.dao.CreateJobApiPayloadDataDao;
+=======
+import com.api.utilities.FakerDataGenerator;
+>>>>>>> 16863adfdeb5e1d5afbeaf35b7e54d9e91805096
 import com.dataproviders.api.bean.CreateJobBean;
 import com.dataproviders.api.bean.UserBean;
 import com.opencsv.exceptions.CsvException;
@@ -44,6 +48,7 @@ public class DataProviderUtil {
 	
 	}
 	
+<<<<<<< HEAD
 	@DataProvider(name="CreateJobAPIDBDataProvider", parallel=true)
 	public static Iterator<CreatejobApiPayload> createJobApiDBDataProvider() {
 		List<CreateJobBean> beanlist = CreateJobApiPayloadDataDao.getCreteJobPayloadData();
@@ -53,5 +58,14 @@ public class DataProviderUtil {
 			payloadList.add(payload);
 		}
 		return payloadList.iterator();
+=======
+	@DataProvider(name="Fakerdataprovider", parallel=true)
+	public static Iterator<CreatejobApiPayload> generateFakeDataProvider() throws IOException, CsvException {
+		
+	Iterator<CreatejobApiPayload> paylodlist = FakerDataGenerator.generateFakeCreateJobData(1000);
+		return paylodlist;
+	
+	
+>>>>>>> 16863adfdeb5e1d5afbeaf35b7e54d9e91805096
 	}
 }
